@@ -4,6 +4,7 @@ export function getUser() {
     // if (obj) {
     //     return JSON.parse(obj);
     // }
+    return {name:'黄鹏举',avatar:false}
 }
 export function delUser() {
     // setCookie('loginUser', '', -1)

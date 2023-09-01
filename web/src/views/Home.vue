@@ -12,7 +12,7 @@
          <div class="w-full overflow-y-scroll">
            
         <!-- Hello.vue 的路由填充位 -->
-         <router-view />
+        <router-view></router-view>
           
         </div>
         </div>

@@ -1,6 +1,6 @@
 <template>
   <!-- Home.vue 的路由填充位 -->
-  <router-view />
+  <router-view></router-view>
 </template>
 
 <style>

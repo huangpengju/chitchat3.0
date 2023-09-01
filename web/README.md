@@ -45,11 +45,26 @@ npm install pinia
 ### Tailwind (Tailwind CSS 是一个功能类优先的 CSS 框架) 
 官网：https://tailwindui.com/documentation
 参考博文：https://zhuanlan.zhihu.com/p/359694054
+参考博文：https://tailwind.nodejs.cn/docs/typography-plugin
 ```
 npm install tailwindcss@latest
 npm install -D tailwindcss postcss autoprefixer
 
 npm install autoprefixer
+
+npm install -D @tailwindcss/typography
+
+```
+
+### Sass
+官网：https://www.sass.hk/docs/
+参考博文：https://blog.csdn.net/nanfangxinchai/article/details/132042635
+参考博文：https://blog.csdn.net/qq_44170108/article/details/126987457
+```
+npm install -D sass
+
+npm install node-sass --sava-dev            // 不确认是否使用了
+npm install sass-loader --save-dev  // 不确认是否使用了
 ```
 
 ### Element (按需引入)
@@ -78,5 +93,12 @@ npm install vite-plugin-prismjs -D
 参考博文：https://blog.csdn.net/lhz_333/article/details/116790345
 参考博文：https://zhuanlan.zhihu.com/p/260585097
 ```
+npm install @icon-park/vue-next --save
+```
 
+### Mock.js
+官网：https://github.com/nuysoft/Mock/wiki
+参考博文：https://blog.csdn.net/yjl13598765406/article/details/128017654
+```
+npm install --save mockjs
 ```
