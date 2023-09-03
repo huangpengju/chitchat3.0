@@ -12,7 +12,8 @@ const routes = [
           {
             path: '/index',
             name: 'Index',
-            component: () => import("views/home/Hello.vue")
+            // component: () => import("views/home/Hello.vue")
+            component: () => import("views/home/Info.vue")
           }
         ]
     },
