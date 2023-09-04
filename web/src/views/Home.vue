@@ -6,13 +6,9 @@
         
 
         <div class="flex flex-wrap" style="border:1px solid red">
-            <div style="border:1px solid blue" class="basis-3/4">
-                <Hot></Hot>
-            </div>
-            <div style="border:1px solid green" class="basis-1/4">
-               <router-view></router-view>
-            </div>
+            <Hot></Hot>
         </div>
+
     </div>
   </template>
   

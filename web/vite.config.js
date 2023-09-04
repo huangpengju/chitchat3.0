@@ -45,7 +45,7 @@ export default ({ mode }) => {
         resolvers: [
           ElementPlusResolver({ importStyle: "sass" }), // 按需引入修改主题色添加这一行，使用预处理样式
         ],
-      })
+      }),
     ],
     envPrefix: envPrefix,
     // server: {

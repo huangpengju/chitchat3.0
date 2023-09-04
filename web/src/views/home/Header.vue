@@ -1,129 +1,133 @@
 <template>
-  <el-header>
-    <el-row class="flex h-full w-full" justify="center" align="middle">
-      <el-col :span="4">
-          <router-link to="/" class="flex text-center items-center content-center">
-            <img class="w-[2.5rem] mx-[0.5rem]" src="@/assets/weave.png" />
-            <span class="font-bold font-mono text-2xl pl-[0.5rem]">黄鹏举</span>
-          </router-link>
-      </el-col>
-      <el-col :span="14" class="flex-col text-right content-center">
-        <el-menu mode="horizontal" class="font-bold" active-text-color="#000000">
-          <el-menu-item index="1">
-            <router-link to="/">主页</router-link>
-          </el-menu-item>
-          <el-menu-item index="2">
-            <!-- <router-link to="/docs">文档</router-link> -->
-            <router-link to="#">文档</router-link>
-          </el-menu-item>
-          <el-menu-item index="3">
-            <!-- <router-link to="/posts">文章</router-link> -->
-            <router-link to="#">文章</router-link>
-          </el-menu-item>
-        </el-menu>
-      </el-col>
-      <el-col :span="6" class="text-right pr-[1rem] space-x-[1rem]">
-        <el-button link @click="notImplement('Search')">
-          <search theme="outline" size="18" fill="#333" />
-        </el-button>
-        <el-button link>
-          <a :href="githubInfo.project" target="_blank">
-            <github-one theme="outline" size="18" :fill="['#333']" />
+    <header class="bg-white">
+      <nav class="mx-auto flex max-w-7xl items-center justify-between p-6 lg:px-8" aria-label="Global">
+        <div class="flex lg:flex-1">
+          <a href="#" class="-m-1.5 p-1.5">
+            <span class="sr-only">Your Company</span>
+            <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="" />
           </a>
-        </el-button>
-        <el-dropdown placement="bottom">
-          <el-button link>
-            <el-avatar v-if="user.avatar" :size="50" :src="user.avatar" />
-            <me v-else theme="two-tone" size="18" :fill="['#333', '#50e3c2']" />
-          </el-button>
-          <template #dropdown>
-            <span class="flex items-center content-center text-center mt-[1rem] mb-[0.5rem] mx-4 font-bold text-l">
-              <SunOne theme="two-tone" size="24" :fill="['#333', '#f8e71c']" />
-              <span class="ml-2">Hi {{ user.name }}</span>
-            </span>
-            <el-dropdown-menu>
-              <el-dropdown-item :icon="Info" @click="toUserInfo">
-                用户信息
-              </el-dropdown-item>
-            </el-dropdown-menu>
-            <el-dropdown-menu>
-              <el-dropdown-item :icon="SettingOne" @click="notImplement('Setting')">
-                设置
-              </el-dropdown-item>
-            </el-dropdown-menu>
-
-            <el-dropdown-menu>
-              <el-dropdown-item :icon="Logout" @click="logout">
-                注销
-              </el-dropdown-item>
-            </el-dropdown-menu>
-          </template>
-        </el-dropdown>
-      </el-col>
-    </el-row>
-  </el-header>
-</template>
-
-<script setup>
-import { Info, SettingOne, Logout, SunOne, Search, GithubOne, Me } from '@icon-park/vue-next';
-import { getUser, delUser } from '@/utils';
-// import request from '@/axios';
-import { ElMessage, ElNotification } from "element-plus";
-import { useRouter } from 'vue-router';
-import { githubInfo } from '@/config.js';
-
-const user = getUser();
-const router = useRouter();
-
-function logout() {
-  let lg = function () {
-    console.log("logout success")
-    ElNotification.success({
-      title: 'Logout Success',
-      message: 'Bye~ ' + user.name,
-      showClose: true,
-      duration: 1500,
-    })
-    delUser();
-    router.push('/login');
-  }
-
-//   request.delete("/api/v1/auth/token").then(() => {
-//     lg();
-//   }).catch((error) => {
-//     console.log(error)
-//   })
-};
-
-function toUserInfo() {
-  // router.push(`/users/${user.id}`)
-  router.push(`/`)
-};
-
-function notImplement(name) {
-  ElMessage({
-    message: name + ' Coming Soon',
-    type: 'warning',
-    duration: 1000,
-  })
-}
-
-</script>
-
-<style scoped>
-.el-header {
-  border-bottom: 1px solid #d1d5db;
-}
-
-.el-menu {
-  border: none;
-}
-
-.el-menu-item {
-  border: none;
-}
-
-.el-menu-item.is-active {
-  border: none;
-}
-</style>
+        </div>
+        <div class="flex lg:hidden">
+          <button type="button" class="-m-2.5 inline-flex items-center justify-center rounded-md p-2.5 text-gray-700" @click="mobileMenuOpen = true">
+            <span class="sr-only">Open main menu</span>
+            <Bars3Icon class="h-6 w-6" aria-hidden="true" />
+          </button>
+        </div>
+        <PopoverGroup class="hidden lg:flex lg:gap-x-12">
+          <Popover class="relative">
+            <PopoverButton class="flex items-center gap-x-1 text-sm font-semibold leading-6 text-gray-900">
+              Product
+              <ChevronDownIcon class="h-5 w-5 flex-none text-gray-400" aria-hidden="true" />
+            </PopoverButton>
+  
+            <transition enter-active-class="transition ease-out duration-200" enter-from-class="opacity-0 translate-y-1" enter-to-class="opacity-100 translate-y-0" leave-active-class="transition ease-in duration-150" leave-from-class="opacity-100 translate-y-0" leave-to-class="opacity-0 translate-y-1">
+              <PopoverPanel class="absolute -left-8 top-full z-10 mt-3 w-screen max-w-md overflow-hidden rounded-3xl bg-white shadow-lg ring-1 ring-gray-900/5">
+                <div class="p-4">
+                  <div v-for="item in products" :key="item.name" class="group relative flex items-center gap-x-6 rounded-lg p-4 text-sm leading-6 hover:bg-gray-50">
+                    <div class="flex h-11 w-11 flex-none items-center justify-center rounded-lg bg-gray-50 group-hover:bg-white">
+                      <component :is="item.icon" class="h-6 w-6 text-gray-600 group-hover:text-indigo-600" aria-hidden="true" />
+                    </div>
+                    <div class="flex-auto">
+                      <a :href="item.href" class="block font-semibold text-gray-900">
+                        {{ item.name }}
+                        <span class="absolute inset-0" />
+                      </a>
+                      <p class="mt-1 text-gray-600">{{ item.description }}</p>
+                    </div>
+                  </div>
+                </div>
+                <div class="grid grid-cols-2 divide-x divide-gray-900/5 bg-gray-50">
+                  <a v-for="item in callsToAction" :key="item.name" :href="item.href" class="flex items-center justify-center gap-x-2.5 p-3 text-sm font-semibold leading-6 text-gray-900 hover:bg-gray-100">
+                    <component :is="item.icon" class="h-5 w-5 flex-none text-gray-400" aria-hidden="true" />
+                    {{ item.name }}
+                  </a>
+                </div>
+              </PopoverPanel>
+            </transition>
+          </Popover>
+  
+          <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Features</a>
+          <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Marketplace</a>
+          <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Company</a>
+        </PopoverGroup>
+        <div class="hidden lg:flex lg:flex-1 lg:justify-end">
+          <a href="#" class="text-sm font-semibold leading-6 text-gray-900">Log in <span aria-hidden="true">&rarr;</span></a>
+        </div>
+      </nav>
+      <Dialog as="div" class="lg:hidden" @close="mobileMenuOpen = false" :open="mobileMenuOpen">
+        <div class="fixed inset-0 z-10" />
+        <DialogPanel class="fixed inset-y-0 right-0 z-10 w-full overflow-y-auto bg-white px-6 py-6 sm:max-w-sm sm:ring-1 sm:ring-gray-900/10">
+          <div class="flex items-center justify-between">
+            <a href="#" class="-m-1.5 p-1.5">
+              <span class="sr-only">Your Company</span>
+              <img class="h-8 w-auto" src="https://tailwindui.com/img/logos/mark.svg?color=indigo&shade=600" alt="" />
+            </a>
+            <button type="button" class="-m-2.5 rounded-md p-2.5 text-gray-700" @click="mobileMenuOpen = false">
+              <span class="sr-only">Close menu</span>
+              <XMarkIcon class="h-6 w-6" aria-hidden="true" />
+            </button>
+          </div>
+          <div class="mt-6 flow-root">
+            <div class="-my-6 divide-y divide-gray-500/10">
+              <div class="space-y-2 py-6">
+                <Disclosure as="div" class="-mx-3" v-slot="{ open }">
+                  <DisclosureButton class="flex w-full items-center justify-between rounded-lg py-2 pl-3 pr-3.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">
+                    Product
+                    <ChevronDownIcon :class="[open ? 'rotate-180' : '', 'h-5 w-5 flex-none']" aria-hidden="true" />
+                  </DisclosureButton>
+                  <DisclosurePanel class="mt-2 space-y-2">
+                    <DisclosureButton v-for="item in [...products, ...callsToAction]" :key="item.name" as="a" :href="item.href" class="block rounded-lg py-2 pl-6 pr-3 text-sm font-semibold leading-7 text-gray-900 hover:bg-gray-50">{{ item.name }}</DisclosureButton>
+                  </DisclosurePanel>
+                </Disclosure>
+                <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Features</a>
+                <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Marketplace</a>
+                <a href="#" class="-mx-3 block rounded-lg px-3 py-2 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Company</a>
+              </div>
+              <div class="py-6">
+                <a href="#" class="-mx-3 block rounded-lg px-3 py-2.5 text-base font-semibold leading-7 text-gray-900 hover:bg-gray-50">Log in</a>
+              </div>
+            </div>
+          </div>
+        </DialogPanel>
+      </Dialog>
+    </header>
+  </template>
+  
+  <script setup>
+  import { ref } from 'vue'
+  import {
+    Dialog,
+    DialogPanel,
+    Disclosure,
+    DisclosureButton,
+    DisclosurePanel,
+    Popover,
+    PopoverButton,
+    PopoverGroup,
+    PopoverPanel,
+  } from '@headlessui/vue'
+  import {
+    ArrowPathIcon,
+    Bars3Icon,
+    ChartPieIcon,
+    CursorArrowRaysIcon,
+    FingerPrintIcon,
+    SquaresPlusIcon,
+    XMarkIcon,
+  } from '@heroicons/vue/24/outline'
+  import { ChevronDownIcon, PhoneIcon, PlayCircleIcon } from '@heroicons/vue/20/solid'
+  
+  const products = [
+    { name: 'Analytics', description: 'Get a better understanding of your traffic', href: '#', icon: ChartPieIcon },
+    { name: 'Engagement', description: 'Speak directly to your customers', href: '#', icon: CursorArrowRaysIcon },
+    { name: 'Security', description: 'Your customers’ data will be safe and secure', href: '#', icon: FingerPrintIcon },
+    { name: 'Integrations', description: 'Connect with third-party tools', href: '#', icon: SquaresPlusIcon },
+    { name: 'Automations', description: 'Build strategic funnels that will convert', href: '#', icon: ArrowPathIcon },
+  ]
+  const callsToAction = [
+    { name: 'Watch demo', href: '#', icon: PlayCircleIcon },
+    { name: 'Contact sales', href: '#', icon: PhoneIcon },
+  ]
+  
+  const mobileMenuOpen = ref(false)
+  </script>

@@ -102,3 +102,17 @@ npm install @icon-park/vue-next --save
 ```
 npm install --save mockjs
 ```
+### Headless UI 与 Tailwind CSS完美集成。
+官网：https://headlessui.com/
+官网：https://github.com/tailwindlabs/headlessui
+
+```
+npm install @headlessui/vue@latest
+```
+
+### 使用第三方图标 heroicons 使用方法：
+官网：https://heroicons.com/
+参考博文：https://blog.csdn.net/yongyafang123/article/details/125978200
+```
+npm install @heroicons/vue
+```

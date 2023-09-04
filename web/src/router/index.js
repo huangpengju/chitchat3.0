@@ -7,15 +7,15 @@ const routes = [
         path: '/',  // 当前路由规则匹配的 hash 地址（需要和 router-link标签里的地址一样）
         name: 'Home', // 给路由规则起一个别名，命名路由
         component: () => import("views/Home.vue"),   // 当前路由规则对应要展示的组件
-        redirect: '/index',
-        children: [
-          {
-            path: '/index',
-            name: 'Index',
+        // redirect: '/index',
+        // children: [
+          // {
+            // path: '/index',
+            // name: 'Index',
             // component: () => import("views/home/Hello.vue")
-            component: () => import("views/home/Info.vue")
-          }
-        ]
+            // component: () => import("views/home/Info.vue")
+          // }
+        // ]
     },
     {
       path:'/login',
