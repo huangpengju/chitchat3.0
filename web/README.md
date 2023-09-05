@@ -44,6 +44,7 @@ npm install pinia
 
 ### Tailwind (Tailwind CSS 是一个功能类优先的 CSS 框架) 
 官网：https://tailwindui.com/documentation
+官网：https://tailwindcss.com/
 参考博文：https://zhuanlan.zhihu.com/p/359694054
 参考博文：https://tailwind.nodejs.cn/docs/typography-plugin
 ```

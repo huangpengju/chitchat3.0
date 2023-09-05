@@ -5,9 +5,9 @@
         <Header class="w-full h-full"/>
         
 
-        <div class="flex flex-wrap" style="border:1px solid red">
+        <!-- <div class="flex flex-wrap" style="border:1px solid red"> -->
             <Hot></Hot>
-        </div>
+        <!-- </div> -->
 
     </div>
   </template>
