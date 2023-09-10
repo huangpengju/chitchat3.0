@@ -1,12 +1,12 @@
 <template>
-  <div class="bg-white py-24 sm:py-32" style="border:1px solid rgb(68, 0, 255)">
+  <div class="bg-white py-9 sm:py-17" >
     <div class="mx-auto max-w-7xl px-6 lg:px-8">
-      <div class="mx-auto max-w-2xl lg:mx-0">
+      <div class="mx-auto  lg:mx-0">
         <h2 class="text-3xl font-bold tracking-tight text-gray-900 sm:text-4xl">热搜榜</h2>
-        <p class="mt-2 text-lg leading-8 text-gray-600">今天是9月4日，周一的晚上，工作累了，歇一会吧！</p>
+        <p class="mt-2 text-lg leading-8 text-gray-600">提供了各大热门网站的聚合信息、热榜、榜单，包括了知乎、微博、虎扑、V2EX、贴吧、抖音、今日头条等等，一分钟轻松了解全网最新资讯，这不是摸鱼，这叫做关注世界动态变化！</p>
       </div>
-      <div class="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-16 sm:pt-16 lg:mx-0 lg:max-w-none lg:grid-cols-3">
-        <article style="border: 1px solid red;" v-for="post in posts" :key="post.id" class="flex max-w-xl flex-col items-start justify-between">
+      <div class="mx-auto mt-10 grid max-w-2xl grid-cols-1 gap-x-8 gap-y-16 border-t border-gray-200 pt-10 sm:mt-8 sm:pt-8 lg:mx-0 lg:max-w-none lg:grid-cols-3">
+        <article  v-for="post in posts" :key="post.id" class="flex max-w-xl flex-col items-start justify-between rounded-lg  shadow-lg  shadow-gray-400 p-4">
           <div v-for="post in posts" :key="post.id" >
               <div class="group relative">
                 <h3 class="mt-3 text-lg font-semibold leading-6 text-gray-900 group-hover:text-gray-600">
@@ -41,6 +41,16 @@
 </template>
 
 <script setup>
+import request from '@/axios'
+
+request.get('http://127.0.0.1:80/test')
+  .then(function (response) {
+    console.log(response);
+  })
+  .catch(function (error) {
+    console.log(error);
+  });
+
 const posts = [
   {
     id: 1,
@@ -146,28 +156,7 @@ const posts = [
   },
   // More posts...
 ]
+
+ 
 </script>
-<!-- <template>
-     <div class="flex flex-wrap">
-      <div class="w-1/3 p-4">
-        <div class="bg-white p-4 rounded shadow-md">
-          <h2 class="text-lg font-bold">卡片1</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </div>
-      </div>
-      <div class="w-1/3 p-4">
-        <div class="bg-white p-4 rounded shadow-md">
-          <h2 class="text-lg font-bold">卡片2</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </div>
-      </div>
-      <div class="w-1/3 p-4">
-        <div class="bg-white p-4 rounded shadow-md">
-          <h2 class="text-lg font-bold">卡片2</h2>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
-        </div>
-      </div>
-    </div>
 
-
-  </template> -->

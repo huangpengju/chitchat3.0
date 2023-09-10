@@ -116,3 +116,9 @@ npm install @headlessui/vue@latest
 ```
 npm install @heroicons/vue
 ```
+
+### axios （vue3 + axios 与 go 交互）
+
+```
+npm install axios
+```

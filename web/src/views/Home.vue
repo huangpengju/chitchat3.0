@@ -1,11 +1,11 @@
 <template>
-    <div class="flex flex-col w-full h-full">
+    <div class="flex flex-col w-full h-full ">
         
         <!-- 加载 Header 组件 -->
         <Header class="w-full h-full"/>
         
 
-        <div class="flex flex-wrap" style="border:1px solid red">
+        <div class="flex flex-wrap" >
             <Hot></Hot>
         </div>
 
